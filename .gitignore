@@ -1,0 +1,9 @@
+coverage/
+export
+node_modules
+dist
+teste.ts
+teste.js
+template.css
+template.html
+.scannerwork/
