@@ -1,5 +1,5 @@
-import express from 'express';
-import cors from 'cors';
+import * as express from 'express';
+import * as cors from 'cors';
 import { Routes } from './routes/Routes';
 
 export class App {
@@ -7,7 +7,7 @@ export class App {
   private readonly customRoutes = new Routes();
 
   public constructor() {
-    this.express = express()
+    this.express = express();
     this.middleware()
     this.routes()
   }

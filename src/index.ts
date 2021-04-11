@@ -1,4 +1,4 @@
-import { App } from './src/Application';
+import { App } from './Application';
 
 const app = new App().getExpress();
 

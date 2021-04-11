@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "clear": "rm -rf package dist",
-    "compile": "tsc -p src/tsconfig.json && cp -r package.json src/resources dist/main",
+    "compile": "tsc -p src/tsconfig.json && cp -r package.json dist/main",
     "build": "npm run clear && npm run compile && npm run copy-files && npm run install-deps && cd dist/main && npm install --production",
     "build:ci": "npm run clear && npm run compile:ci && cd dist/main && npm install --production",
-    "copy-files": "cp package.json ./dist/main && cp -r ./src/app/cert ./dist/main",
+    "copy-files": "cp package.json ./dist/main",
     "install-deps": "cd dist && npm install --production",
     "test:ci": "jest --coverage --verbose --config=jest.config.js",
     "test": "jest",
