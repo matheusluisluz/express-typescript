@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { HttpHelper } from '../util/http-helper';
 
-export class TestControler {
+export class Controler {
 
   public get(req: Request, res: Response) {
     const httpHelper: HttpHelper = new HttpHelper();

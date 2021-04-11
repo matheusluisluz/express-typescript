@@ -1,19 +1,19 @@
 import { Router } from 'express';
-import { TestControler } from '../controller/test.controller';
+import { Controler } from '../controller/controller';
 
 const router = Router();
 
 export class Routes {
 
-  testController: TestControler;
+  controller: Controler;
 
   constructor() {
-    this.testController = new TestControler();
+    this.controller = new Controler();
   }
 
   public execute(): Router {
-    router.get('/test', this.testController.get);
-    router.post('/test', this.testController.post);
+    router.get('/test', this.controller.get);
+    router.post('/test', this.controller.post);
     return router;
   }
 };
