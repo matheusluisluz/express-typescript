@@ -7,8 +7,8 @@ export class Routes {
       return res.status(201).send({ message: '/GET Hello World' });
     });
     router.post('/test', (req: Request, res: Response) => {
-      const body = req.body();
-      console.log(body);
+      console.log(req.body);
+      console.log(req.query);
       return res.status(201).send({ message: '/POST Hello World' })
     });
     return router;

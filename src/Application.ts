@@ -8,8 +8,8 @@ export class App {
 
   public constructor() {
     this.express = express();
-    this.middleware()
-    this.routes()
+    this.middleware();
+    this.routes();
   }
 
   public getExpress(): express.Application {
@@ -18,6 +18,7 @@ export class App {
 
   private middleware(): void {
     this.express.use(express.json());
+    this.express.use(express.urlencoded({ extended: true }));
     this.express.use(cors());
     this.express.use(this.customRoutes.execute());
   }
@@ -26,9 +27,5 @@ export class App {
     this.express.get('/', (req, res): express.Response => {
       return res.send('Hello World');
     })
-  }
-
-  private database(): void {
-
   }
 };
