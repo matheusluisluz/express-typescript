@@ -20,6 +20,7 @@ process
   });
 
 const server = app.listen('3001', () => {
+  console.log('Server starting at 3001');
 
   server.on('close', () => {
     console.log('Shutdown the application server');
