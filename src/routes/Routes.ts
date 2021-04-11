@@ -1,16 +1,19 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { TestControler } from '../controller/test.controller';
+
 const router = Router();
 
 export class Routes {
+
+  testController: TestControler;
+
+  constructor() {
+    this.testController = new TestControler();
+  }
+
   public execute(): Router {
-    router.get('/test', (req: Request, res: Response) => {
-      return res.status(201).send({ message: '/GET Hello World' });
-    });
-    router.post('/test', (req: Request, res: Response) => {
-      console.log(req.body);
-      console.log(req.query);
-      return res.status(201).send({ message: '/POST Hello World' })
-    });
+    router.get('/test', this.testController.get);
+    router.post('/test', this.testController.post);
     return router;
   }
 };

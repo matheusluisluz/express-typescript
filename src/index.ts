@@ -1,4 +1,5 @@
-import { App } from './Application';
+import { App } from './application';
+import { environment } from './configuration/environment';
 
 const app = new App().getExpress();
 
@@ -19,8 +20,8 @@ process
     console.info('Node process exit with code:', code);
   });
 
-const server = app.listen('3001', () => {
-  console.log('Server starting at 3001');
+const server = app.listen(environment.port, () => {
+  console.log(`Server starting at ${environment.port}`);
 
   server.on('close', () => {
     console.log('Shutdown the application server');
