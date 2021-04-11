@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as cors from 'cors';
-import { Routes } from './routes/Routes';
+import { Routes } from './routes/routes';
 
 export class App {
   private readonly express: express.Application;

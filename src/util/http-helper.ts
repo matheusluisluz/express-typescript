@@ -1,5 +1,6 @@
 import { Response } from 'express';
 import { ApiError } from '../model/api-error';
+import { ApiResponse } from '../model/api-response';
 import { environment } from '../configuration/environment';
 import { ValidationMessage } from '../model/validate-message';
 
@@ -8,7 +9,7 @@ export class HttpHelper implements IHttpHelper {
   private readonly unprocessableEntity = 422;
   private readonly internalServerError = 500;
 
-  public buildSuccessResponse(result: any, res: Response): Response {
+  public buildSuccessResponse(result: ApiResponse, res: Response): Response {
     console.log('Body parameter received for mapping');
     console.log('ExpressResult Created', result);
     return res.status(201).send(result);
