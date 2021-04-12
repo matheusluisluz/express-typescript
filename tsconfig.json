@@ -9,6 +9,7 @@
     ],
     "outDir": "dist",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,

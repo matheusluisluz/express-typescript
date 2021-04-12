@@ -1,10 +1,12 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import { Routes } from './routes/routes';
+import { HealthStatusRoutes } from './health-status/health-status-routes';
 
 export class App {
   private readonly express: express.Application;
   private readonly customRoutes = new Routes();
+  private readonly healthStatus = new HealthStatusRoutes();
 
   public constructor() {
     this.express = express();
@@ -21,6 +23,7 @@ export class App {
     this.express.use(express.urlencoded({ extended: true }));
     this.express.use(cors());
     this.express.use(this.customRoutes.execute());
+    this.express.use(this.healthStatus.execute());
   }
 
   private routes(): void {
