@@ -5,7 +5,7 @@ import * as packageInfo from '../../package.json';
 
 export class HealthStatusControler {
 
-  public get(req: Request, res: Response) {
+  public get(req: Request, res: Response): Response {
     const httpHelper: HttpHelper = new HttpHelper();
     try {
       const result = {

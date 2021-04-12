@@ -3,7 +3,7 @@ import { HttpHelper } from '../util/http-helper';
 
 export class Controler {
 
-  public get(req: Request, res: Response) {
+  public get(req: Request, res: Response): Response {
     const httpHelper: HttpHelper = new HttpHelper();
     try {
       console.log(req.query);
@@ -14,7 +14,7 @@ export class Controler {
       return httpHelper.buildErrorResponse(error, res);
     }
   }
-  public post(req: Request, res: Response) {
+  public post(req: Request, res: Response): Response {
     const httpHelper: HttpHelper = new HttpHelper();
     try {
       console.log(req.body);
