@@ -14,8 +14,17 @@ export class AuthGoogleRoutes {
       successRedirect: '/protected',
       failureRedirect: '/auth/google/failure'
     }));
-    router.get('/protected', this.isLoggetIn, (req: Request, res: Response) => {
+    router.get('/protected', this.isLoggedIn, (req: Request, res: Response) => {
       return res.send(`Hello ${req.user}`);
+    });
+    router.get('/logout', (req: Request, res: Response) => {
+      req.logout();
+      req.session.destroy(err => {
+        if (err) {
+          throw err;
+        }
+      });
+      res.send('Goodbye!');
     });
     router.get('/auth/google/failure', (req: Request, res: Response) => {
       return res.send(`Failed to authenticate..`);
@@ -23,7 +32,7 @@ export class AuthGoogleRoutes {
     return router;
   }
 
-  private isLoggetIn(req: Request, res: Response, next: NextFunction) {
+  private isLoggedIn(req: Request, res: Response, next: NextFunction) {
     req.user ? next() : res.sendStatus(401);
   }
 };
