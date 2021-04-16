@@ -22,7 +22,8 @@
     "express-session": "^1.17.1",
     "ip": "^1.1.5",
     "passport": "^0.4.1",
-    "passport-google-oauth2": "^0.2.0"
+    "passport-google-oauth2": "^0.2.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

@@ -1,10 +1,11 @@
 import { App } from './application';
 import { environment } from './configuration/environment';
+import { logger } from './util/logger';
 
 const app = new App().getExpress();
 
 const shutdown = () => {
-  console.warn('Server receive signal to shutdown.');
+  logger.warn('Server receive signal to shutdown.');
   process.exit(0);
 };
 
@@ -13,18 +14,18 @@ process
   .on('SIGINT', shutdown)
   .on('SIGHUP', shutdown)
   .on('uncaughtException', (er) => {
-    console.error(`uncaughtException caught the error: ${er.message}`);
+    logger.error(`uncaughtException caught the error: ${er.message}`);
     throw er;
   })
   .on('exit', (code) => {
-    console.info('Node process exit with code:', code);
+    logger.info('Node process exit with code:', code);
   });
 
 const server = app.listen(environment.port, () => {
-  console.log(`Server starting at ${environment.port}`);
+  logger.info(`Server starting at ${environment.port}`);
 
   server.on('close', () => {
-    console.log('Shutdown the application server');
+    logger.info('Shutdown the application server');
   });
 });
 
