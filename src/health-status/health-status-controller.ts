@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { address } from 'ip';
 import { HttpHelper } from '../util/http-helper';
 import * as packageInfo from '../../package.json';
+import { logger } from '../util/logger';
 
 export class HealthStatusControler {
 
@@ -18,7 +19,7 @@ export class HealthStatusControler {
       };
       return httpHelper.buildSuccessResponse(result, res);
     } catch (error) {
-      console.error('Error processing information', error.stack || '', error);
+      logger.error('Error processing information', error.stack || '', error);
       return httpHelper.buildErrorResponse(error, res);
     }
   }

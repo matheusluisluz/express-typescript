@@ -3,6 +3,7 @@ import { ApiError } from '../model/api-error';
 import { ApiResponse } from '../model/api-response';
 import { environment } from '../configuration/environment';
 import { ValidationMessage } from '../model/validate-message';
+import { logger } from './logger';
 
 export class HttpHelper implements IHttpHelper {
   private readonly isDebugEnabled = !environment.production;
@@ -10,13 +11,13 @@ export class HttpHelper implements IHttpHelper {
   private readonly internalServerError = 500;
 
   public buildSuccessResponse(result: ApiResponse, res: Response): Response {
-    console.log('Body parameter received for mapping');
-    console.log('ExpressResult Created', result);
+    logger.info('Body parameter received for mapping');
+    logger.info('ExpressResult Created', result);
     return res.status(201).send(result);
   }
 
   public buildErrorResponse(error: ApiError | ValidationMessage[][], res: Response): Response {
-    console.log('Function that handle with error messages in httpHelper');
+    logger.info('Function that handle with error messages in httpHelper');
     const statusCode = Array.isArray(error) && ValidationMessage.prototype.isPrototypeOf(error[0]) ||
       Array.isArray(error) && ValidationMessage.prototype.isPrototypeOf(error[0][0]) ?
       this.unprocessableEntity : error instanceof ApiError ?
