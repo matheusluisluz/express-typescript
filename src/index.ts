@@ -18,7 +18,7 @@ process
     throw er;
   })
   .on('exit', (code) => {
-    logger.info('Node process exit with code:', code);
+    logger.info(`Node process exit with code: ${code}` );
   });
 
 const server = app.listen(environment.port, () => {

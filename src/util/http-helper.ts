@@ -13,7 +13,7 @@ export class HttpHelper implements IHttpHelper {
   public buildSuccessResponse(result: ApiResponse, res: Response): Response {
     logger.info('Body parameter received for mapping');
     logger.info('ExpressResult Created', result);
-    return res.status(201).send(result);
+    return res.status(200).send(result);
   }
 
   public buildErrorResponse(error: ApiError | ValidationMessage[][], res: Response): Response {
