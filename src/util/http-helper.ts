@@ -11,8 +11,8 @@ export class HttpHelper implements IHttpHelper {
   private readonly internalServerError = 500;
 
   public buildSuccessResponse(result: ApiResponse, res: Response): Response {
-    logger.info('Body parameter received for mapping');
-    logger.info('ExpressResult Created', result);
+    logger.info('ApiResponse received for mapping');
+    logger.info(`Response created`);
     return res.status(200).send(result);
   }
 
@@ -28,6 +28,6 @@ export class HttpHelper implements IHttpHelper {
 }
 
 export interface IHttpHelper {
-  buildSuccessResponse(result: any, res: Response): Response;
+  buildSuccessResponse(result: ApiResponse, res: Response): Response;
   buildErrorResponse(error: ApiError, res: Response): Response;
 }
