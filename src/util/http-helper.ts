@@ -10,10 +10,10 @@ export class HttpHelper implements IHttpHelper {
   private readonly unprocessableEntity = 422;
   private readonly internalServerError = 500;
 
-  public buildSuccessResponse(result: ApiResponse, res: Response): Response {
-    logger.info('ApiResponse received for mapping');
+  public buildSuccessResponse(apiResponse: ApiResponse, res: Response): Response {
+    logger.info(`ApiResponse received for mapping`);
     logger.info(`Response created`);
-    return res.status(200).send(result);
+    return res.status(200).send(apiResponse);
   }
 
   public buildErrorResponse(error: ApiError | ValidationMessage[][], res: Response): Response {
@@ -23,7 +23,12 @@ export class HttpHelper implements IHttpHelper {
       this.unprocessableEntity : error instanceof ApiError ?
         error.statusCode : this.internalServerError;
 
-    return res.status(statusCode).send(error);
+    const errors = error instanceof ApiError ? error.message : error;
+    const result = {
+      errors
+    };
+
+    return res.status(statusCode).send(result);
   }
 }
 
