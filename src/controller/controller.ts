@@ -13,7 +13,7 @@ export class Controler {
       const result = { success: true, message: '/GET Hello World' };
       return httpHelper.buildSuccessResponse(result, res);
     } catch (error) {
-      logger.error('Error processing information', error.stack || '', error);
+      logger.error('Error processing information', error);
       return httpHelper.buildErrorResponse(error, res);
     }
   }

@@ -8,7 +8,6 @@
     "build": "npm run clear && npm run compile && npm run copy-files && npm run install-deps && cd dist/main && npm install --production",
     "copy-files": "cp package.json ./dist/main",
     "install-deps": "cd dist && npm install --production",
-    "test:ci": "jest --coverage --verbose --config=jest.config.js",
     "test": "jest",
     "test-local": " npm test -- -t "
   },
